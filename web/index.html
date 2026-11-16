@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<script>try{const t=JSON.parse(localStorage.getItem('lumen.theme')||'"rose"');document.documentElement.dataset.theme=/^(rose|red|blue|green|gray)$/.test(t)?t:'rose'}catch(e){document.documentElement.dataset.theme='rose'}</script>
+<title>Lumen</title>
+<link rel="icon" type="image/png" sizes="256x256" href="/icon.png">
+<link rel="stylesheet" href="/css/app.css">
+<link rel="stylesheet" href="/css/extras.css">
+</head>
+<body>
+<div id="app">
+  <aside id="sidebar">
+    <div class="brand"><span class="mark"></span>Lumen</div>
+    <nav id="places"></nav>
+    <button id="btn-settings" class="pl settings" type="button"></button>
+  </aside>
+  <main id="main">
+    <div id="tabs" hidden></div>
+    <header id="topbar">
+      <div class="navbtns">
+        <button class="ib" id="btn-back" title="Back (Alt+Left)"></button>
+        <button class="ib" id="btn-forward" title="Forward (Alt+Right)"></button>
+        <button class="ib" id="btn-up" title="Up (Alt+Up)"></button>
+        <button class="ib" id="btn-refresh" title="Refresh (F5)"></button>
+        <button class="ib" id="btn-home" title="Home" hidden></button>
+      </div>
+      <div id="crumbs"></div>
+      <div class="searchbox">
+        <span class="si"></span>
+        <input id="search" type="text" placeholder="Search   ( / )" autocomplete="off" spellcheck="false">
+        <button class="ib" id="sfilter" type="button" title="Search filters"></button>
+        <button id="scope" type="button" title="Search scope (click to change)">This folder</button>
+        <div id="spanel" hidden></div>
+      </div>
+    </header>
+    <div id="toolbar">
+      <div class="seg" id="views">
+        <button data-view="gallery" title="Gallery"></button>
+        <button data-view="grid" title="Grid"></button>
+        <button data-view="list" title="List"></button>
+      </div>
+      <label class="slider" title="Size (Ctrl + wheel)"><span id="size-ic"></span><input id="size" type="range" min="120" max="640" step="10"></label>
+      <span class="grow"></span>
+      <select id="filter" title="Show">
+        <option value="all">All files</option>
+        <option value="media">Images &amp; videos</option>
+        <option value="image">Images</option>
+        <option value="video">Videos</option>
+        <option value="audio">Audio</option>
+        <option value="docs">Documents</option>
+        <option value="code">Code</option>
+        <option value="text">Text files</option>
+        <option value="archives">Archives</option>
+        <option value="folders">Folders</option>
+      </select>
+      <select id="sortkey" title="Sort by">
+        <option value="name">Name</option>
+        <option value="date">Date modified</option>
+        <option value="size">Size</option>
+        <option value="type">Type</option>
+        <option value="dims">Dimensions</option>
+      </select>
+      <button class="ib" id="sortdir" title="Sort direction"></button>
+      <button class="ib" id="btn-hidden" title="Show hidden files (Ctrl+H)"></button>
+      <button class="ib" id="btn-newtab" title="New tab (Alt+T)"></button>
+      <button class="ib" id="btn-split" title="Split view, two panes (F3)"></button>
+      <button class="btn small" id="btn-copyto" hidden title="Copy the selection to the other pane (F5)">Copy</button>
+      <button class="btn small" id="btn-moveto" hidden title="Move the selection to the other pane (F6)">Move</button>
+      <button class="ib" id="btn-newfolder" title="New folder (Ctrl+Shift+N)"></button>
+      <button class="ib" id="btn-newfile" title="New file"></button>
+    </div>
+    <section id="content" tabindex="-1"></section>
+    <footer id="status"><span id="st-left"></span><span id="st-mid"></span><span id="st-right"></span></footer>
+  </main>
+</div>
+
+<div id="viewer" hidden>
+  <div class="v-top">
+    <div class="v-name"><span id="v-title"></span><span id="v-count"></span></div>
+    <div class="v-actions">
+      <button class="ib" data-act="slideshow" title="Slideshow (S)"></button>
+      <button class="ib" data-act="info" title="Info (I)"></button>
+      <button class="ib" data-act="external" title="Open with default app"></button>
+      <button class="ib" data-act="download" title="Download"></button>
+      <button class="ib" data-act="fullscreen" title="Fullscreen (F)"></button>
+      <button class="ib" data-act="close" title="Close (Esc)"></button>
+    </div>
+  </div>
+  <div id="v-stage"></div>
+  <button class="v-nav prev" data-act="prev" title="Previous"></button>
+  <button class="v-nav next" data-act="next" title="Next"></button>
+  <div class="v-bottom" id="v-bottom">
+    <button class="ib" data-act="zoomout" title="Zoom out (-)"></button>
+    <span id="v-zoom">100%</span>
+    <button class="ib" data-act="zoomin" title="Zoom in (+)"></button>
+    <button class="btn small" data-act="fit">Fit</button>
+    <button class="btn small" data-act="actual">100%</button>
+  </div>
+  <aside id="v-info" hidden></aside>
+</div>
+
+<div id="menu" hidden></div>
+<dialog id="dialog"></dialog>
+<div id="toasts"></div>
+<script src="/js/highlight.js"></script>
+<script src="/js/extras.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>
