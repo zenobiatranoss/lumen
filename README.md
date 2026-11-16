@@ -1,4 +1,5 @@
 # Lumen
+**I built this a long time ago and wanted to share it; this is the file manager I use on my system.**
 
 A calm, image-first file browser written in Go. A single binary serves a local web UI (dark gray theme)
 that you open in your browser or as an app window.
